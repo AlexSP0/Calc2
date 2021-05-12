@@ -16,4 +16,5 @@
     <string name="c">C</string>
     <string name="divide">/</string>
     <string name="calc">=</string>
+    <string name="dot">.</string>
 </resources>

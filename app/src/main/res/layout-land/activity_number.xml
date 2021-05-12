@@ -21,7 +21,7 @@
                 android:layout_height="match_parent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/textInputCurrent"
+                    android:id="@+id/textViewCurrent"
                     android:layout_width="@dimen/textViewWidth"
                     android:layout_height="wrap_content"
                     android:hint=""
@@ -36,7 +36,7 @@
                     android:layout_width="@dimen/textViewWidth"
                     android:layout_height="wrap_content"
                     android:hint=""
-                    app:layout_constraintBottom_toTopOf="@+id/textInputCurrent"
+                    app:layout_constraintBottom_toTopOf="@+id/textViewCurrent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -215,47 +215,57 @@
                     android:layout_margin="@dimen/numericButtonMargin"
                     android:text="@string/_0"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/calc"
+                    app:layout_constraintEnd_toStartOf="@+id/buttonDot"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/button7" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/calc"
+                    android:id="@+id/buttonDot"
                     android:layout_width="@dimen/numericButtonWidth"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/numericButtonMargin"
-                    android:text="@string/calc"
+                    android:text="@string/dot"
                     app:layout_constraintBottom_toBottomOf="@+id/button0"
-                    app:layout_constraintEnd_toStartOf="@+id/clear"
+                    app:layout_constraintEnd_toStartOf="@+id/buttonClear"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/button0"
                     app:layout_constraintTop_toTopOf="@+id/button0" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/clear"
+                    android:id="@+id/buttonClear"
                     android:layout_width="@dimen/numericButtonWidth"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/numericButtonMargin"
                     android:text="@string/c"
-                    app:layout_constraintBottom_toBottomOf="@+id/calc"
-                    app:layout_constraintEnd_toStartOf="@+id/divide"
+                    app:layout_constraintBottom_toBottomOf="@+id/buttonDot"
+                    app:layout_constraintEnd_toStartOf="@+id/buttonDivide"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/calc"
-                    app:layout_constraintTop_toTopOf="@+id/calc" />
+                    app:layout_constraintStart_toEndOf="@+id/buttonDot"
+                    app:layout_constraintTop_toTopOf="@+id/buttonDot" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/divide"
+                    android:id="@+id/buttonDivide"
                     android:layout_width="@dimen/numericButtonWidth"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/numericButtonMargin"
                     android:text="@string/divide"
-                    app:layout_constraintBottom_toBottomOf="@+id/clear"
+                    app:layout_constraintBottom_toBottomOf="@+id/buttonClear"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/clear"
-                    app:layout_constraintTop_toTopOf="@+id/clear" />
+                    app:layout_constraintStart_toEndOf="@+id/buttonClear"
+                    app:layout_constraintTop_toTopOf="@+id/buttonClear" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonCalc"
+                    android:layout_width="@dimen/doubleNumberWidth"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/numericButtonMargin"
+                    android:text="@string/calc"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonClear" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
