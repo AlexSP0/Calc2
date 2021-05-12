@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="numericButtonWidth">70dp</dimen>
+    <dimen name="numericButtonMargin">4dp</dimen>
+    <dimen name="textViewWidth">302dp</dimen>
+</resources>
