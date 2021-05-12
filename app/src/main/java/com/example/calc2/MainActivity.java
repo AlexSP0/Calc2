@@ -131,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         currentTextView.setText(calculator.getCurrentString());
         nextTextView.setText(calculator.getNextString());
     }
+
     private void initResources() {
         currentTextView = findViewById(R.id.textViewCurrent);
         nextTextView = findViewById(R.id.textViewNext);
