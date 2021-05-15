@@ -9,96 +9,64 @@ public class Calculator implements Serializable {
 
     public Calculator() {
         currentString = new StringBuffer("0");
-        nextString = new StringBuffer();
+        nextString = new StringBuffer(" ");
     }
+
     public void appendOperation(char op) {
-        switch (op){
-            case '+':
-            case '-':
-            case '*':
-            case '/':
-                nextString.setLength(0);
-                nextString.append(currentString.toString());
-                currentString.setLength(0);
-                currentOperation = op;
-                break;
-            case 'c':
-                double result;
-                switch (currentOperation) {
-                    case '+':
-                        result = Double.parseDouble(nextString.toString()) + Double.parseDouble(currentString.toString());
-                        currentString.setLength(0);
-                        nextString.setLength(0);
-                        currentString.append(result);
-                        break;
-                    case '-':
-                        result = Double.parseDouble(nextString.toString()) - Double.parseDouble(currentString.toString());
-                        currentString.setLength(0);
-                        nextString.setLength(0);
-                        currentString.append(result);
-                        break;
-                    case '*':
-                        result = Double.parseDouble(nextString.toString()) * Double.parseDouble(currentString.toString());
-                        currentString.setLength(0);
-                        nextString.setLength(0);
-                        currentString.append(result);
-                        break;
-                    case '/':
-                        result = Double.parseDouble(nextString.toString()) / Double.parseDouble(currentString.toString());
-                        currentString.setLength(0);
-                        nextString.setLength(0);
-                        currentString.append(result);
-                        break;
-                }
-                break;
-            case 'd':
-                currentString.setLength(0);
-                nextString.setLength(0);
-                break;
+
+        if(op == 'c') {
+            calculate(Double.parseDouble(nextString.toString()),Double.parseDouble(currentString.toString()), currentOperation);
+        }
+        if(op == 'd')  clearNum(); else {
+            currentOperation = op;
+            nextString.setLength(0);
+            nextString.append(currentString.toString());
+            currentString.setLength(0);
         }
     }
+
     public void appendNumber(char num) {
-        switch (num) {
-            case '0':
-                currentString.append('0');
-                break;
-            case '1':
-                currentString.append('1');
-                break;
-            case '2':
-                currentString.append('2');
-                break;
-            case '3':
-                currentString.append('3');
-                break;
-            case '4':
-                currentString.append('4');
-                break;
-            case '5':
-                currentString.append('5');
-                break;
-            case '6':
-                currentString.append('6');
-                break;
-            case '7':
-                currentString.append('7');
-                break;
-            case '8':
-                currentString.append('8');
-                break;
-            case '9':
-                currentString.append('9');
-                break;
-            case '.':
-                currentString.append('.');
-                break;
-        }
+        currentString.append(num);
     }
+
     public String getCurrentString() {
         return currentString.toString();
     }
 
     public String getNextString() {
         return nextString.toString();
+    }
+
+    private int findChar(char c, String str) {
+        return str.indexOf(c);
+    }
+
+    private double calculate(double a, double b, char currentOperation) {
+        switch (currentOperation) {
+            case '/':
+                if(b!=0) update(a/b);
+                break;
+            case '+':
+                update(a+b);
+                break;
+            case '-':
+                update(a-b);
+                break;
+            case '*':
+                update(a*b);
+                break;
+        }
+        return 0;
+    }
+
+    private void update(double result) {
+        currentString.setLength(0);
+        nextString.setLength(0);
+        currentString.append(result);
+    }
+
+    private void clearNum() {
+        currentString.setLength(0);
+        nextString.setLength(0);
     }
 }

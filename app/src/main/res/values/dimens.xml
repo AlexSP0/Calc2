@@ -4,4 +4,5 @@
     <dimen name="numericButtonMargin">4dp</dimen>
     <dimen name="textViewWidth">302dp</dimen>
     <dimen name="doubleNumberWidth">140dp</dimen>
+
 </resources>
