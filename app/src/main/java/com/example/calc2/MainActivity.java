@@ -3,6 +3,8 @@ package com.example.calc2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +12,11 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String CALCULATOR_STATE = "state";
+    public static final String CALCULATOR_THEME = "CALC_THEME";
+    public static final String CHANGE_THEME ="NAME_CHANGE_THEME";
+    public static final int DARK_THEME = 0;
+    public static final int LIGHT_THEME = 1;
+    private int changeThemeFlag;
     private TextView currentTextView;
     private TextView nextTextView;
     private Button button1;
@@ -28,15 +35,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button buttonDivide;
     private Button buttonDot;
     private Button buttonCalc;
-    private  Button buttonClear;
+    private Button buttonClear;
+    private Button buttonChooseTheme;
     private Calculator calculator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);;
+        setAppTheme(getThemeFromSharedPreferences());
         setContentView(R.layout.activity_main);
         initResources();
-
     }
 
     @Override
@@ -125,6 +133,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 calculator.appendOperation('d');
                 updateNumbers();
                 break;
+            case R.id.buttonChoose:
+                Intent intent = new Intent(this, ActivityChooseTheme.class);
+                startActivity(intent);
+                break;
         }
     }
     private void updateNumbers() {
@@ -152,6 +164,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonDot = findViewById(R.id.buttonDot);
         buttonCalc = findViewById(R.id.buttonCalc);
         buttonClear = findViewById(R.id.buttonClear);
+        buttonChooseTheme = findViewById(R.id.buttonChoose);
         button0.setOnClickListener(this);
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
@@ -169,6 +182,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonDot.setOnClickListener(this);
         buttonCalc.setOnClickListener(this);
         buttonClear.setOnClickListener(this);
+        buttonChooseTheme.setOnClickListener(this);
         calculator = new Calculator();
+    }
+    private int getThemeFromSharedPreferences() {
+        SharedPreferences pref = getSharedPreferences(CALCULATOR_THEME, MODE_PRIVATE);
+        int result = pref.getInt(CALCULATOR_THEME,-1);
+        changeThemeFlag = pref.getInt(CHANGE_THEME,-1);
+        if(result == -1) {
+            SharedPreferences.Editor editor = pref.edit();
+            editor.putInt(CALCULATOR_THEME, DARK_THEME);
+            editor.putInt(CHANGE_THEME, 0);
+            editor.apply();
+            result = DARK_THEME;
+        }
+        return getResThemeByCode(result);
+    }
+    private void setAppTheme(int th) {
+        if (changeThemeFlag == 1 ) {
+            setTheme(th);
+            SharedPreferences pref = getSharedPreferences(CALCULATOR_THEME, MODE_PRIVATE);
+            SharedPreferences.Editor editor = pref.edit();
+            editor.putInt(CHANGE_THEME,0);
+            editor.apply();
+            recreate();
+        }
+    }
+
+    private int getResThemeByCode(int th) {
+        switch (th) {
+            case DARK_THEME:
+                return R.style.darkTheme;
+            case LIGHT_THEME: {
+                return R.style.lightTheme;
+            }
+        }
+        return -1;
     }
 }

@@ -16,8 +16,10 @@
     <style name="lightTheme" parent="Theme.Calc2">
         <item name="android:fontFamily">cursive</item>
         <item name="android:textStyle">italic</item>
+        <item name="colorPrimary">@color/teal_200</item>
     </style>
     <style name="darkTheme" parent="Theme.Calc2">
-
+        <item name="android:fontFamily">normal</item>
+        <item name="android:textStyle">normal</item>
     </style>
 </resources>

@@ -17,4 +17,10 @@
     <string name="divide">/</string>
     <string name="calc">=</string>
     <string name="dot">.</string>
+    <string name="choose">Choose</string>
+    <string name="cancel">cancel</string>
+    <string name="ChooseThemeTextView">Choose theme for Calculator:</string>
+    <string name="lightThemeRadioButtonText">Light Theme</string>
+    <string name="darkThemeRadioButtonText">Dark Theme</string>
+    <string name="ch">ch</string>
 </resources>
