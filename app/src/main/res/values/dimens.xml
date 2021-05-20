@@ -3,6 +3,7 @@
     <dimen name="numericButtonWidth">70dp</dimen>
     <dimen name="numericButtonMargin">4dp</dimen>
     <dimen name="textViewWidth">302dp</dimen>
-    <dimen name="doubleNumberWidth">140dp</dimen>
+    <dimen name="doubleNumberWidth">150dp</dimen>
+    <dimen name="chooseThemeTextSize">24sp</dimen>
 
 </resources>
